@@ -58,10 +58,10 @@ function App() {
         />
       </div>
       <div className="content">
-        <h1>Cypress Test Code Generator</h1>
+        <h1>Generátor Cypress test kódu</h1>
         <div className="form-group">
           <label htmlFor="description" className="labelTitle">
-            Test Description
+            Popis testu
           </label>
           <textarea
             className="form-control"
@@ -71,7 +71,7 @@ function App() {
             onChange={handleDescriptionChange}
           ></textarea>
           <label htmlFor="steps" className="labelTitle">
-            Test steps
+            Kroky testu
           </label>
           <textarea
             className="form-control"
@@ -136,11 +136,11 @@ function App() {
           <br />
         </div>
         <button className="btn btn-primary mt-3" onClick={handleSubmit}>
-          Generate Test Code
+          Vygeneruj kód
         </button>
         <div className="mt-4">
           <div className="mt-4">
-            <h3>Generated Cypress Code:</h3>
+            <h3>Vygenerovaný Cypress kód:</h3>
             <CodeDisplay code={testCode} />
           </div>
         </div>
