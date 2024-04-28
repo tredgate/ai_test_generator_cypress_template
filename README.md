@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+## Tredgate AI kurz - Cypress test generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Popis**
+Tato aplikace je vzorovým projektem pro kurz AI. Její hlavní funkcí je generování kódu pro testování pomocí nástroje Cypress na základě vstupních parametrů.
+V hlavní (main) branch je připravená struktura React bez implementace AI.
+Hotový projekt s implementací AI je v branchi `ai-implementation`.
 
-## Available Scripts
+**Jak aplikaci spustit**
 
-In the project directory, you can run:
+Pro spuštění aplikace je potřeba mít nainstalovaný Node.js a npm.
+Poté je potřeba spustit následující příkazy:
 
-### `npm start`
+1. `npm install`
+2. `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Pro použití AI části aplikace je potřeba mít vygenerovaný API klíč pro [OpenAI](https://platform.openai.com/docs/quickstart). Ten je potřeba vložit do souboru `.env` pod názvem `REACT_APP_OPENAI_API_KEY` v kořenovém adresáři aplikace.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Struktura aplikace**
 
-### `npm test`
+Aplikace je postavena na knihovně React a má následující strukturu:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `public/`: Obsahuje veřejné soubory jako je index.html a obrázky.
+- `src/`: Obsahuje zdrojový kód aplikace.
+- `ai/`: Obsahuje soubor [generateCypressCode.js](command:_github.copilot.openSymbolInFile?%5B%22src%2Fai%2FgenerateCypressCode.js%22%2C%22generateCypressCode.js%22%5D "src/ai/generateCypressCode.js"), který je zodpovědný za generování kódu pro testování.
+- [App.js](command:_github.copilot.openSymbolInFile?%5B%22src%2FApp.js%22%2C%22App.js%22%5D "src/App.js"): Hlavní komponenta aplikace.
 
-### `npm run build`
+**Jak používat aplikaci**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Aplikace má jednoduché uživatelské rozhraní, které se skládá z následujících částí:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Pole pro popis testu: Zde uživatel zadává popis testu.
+2. Pole pro identifikátor: Zde uživatel zadává identifikátor.
+3. Pole pro kroky: Zde uživatel zadává kroky testu.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Po stisknutí tlačítka "Generovat" aplikace vygeneruje kód pro testování a zobrazí ho na obrazovce.
