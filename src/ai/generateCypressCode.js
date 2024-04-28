@@ -18,14 +18,15 @@
     5. Vrátit výsledek
   */
 import OpenAI from "openai";
-import dotenv from "dotenv";
 
 const generateCypressCode = async (description, identifier, steps) => {
-  dotenv.config();
   const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 
   const openai = new OpenAI({
     apiKey: apiKey,
+    // ! Nikdy nepoužívejte tuto konfiguraci na fronetendu, protože byste odhalili API klíč, běžná praxe je použít API klíč na backend serveru a z frontendu posílat requesty na server, tímto způsobem API klíč zůstane skrytý (pokud někdo nenapadne server a nezjistí API klíč jiným způsobem)
+    // ! OpenAI dokumentace bezpečnější způsob: https://beta.openai.com/docs/guides/security
+    dangerouslyAllowBrowser: true,
   });
 
   // Příprava promptu
@@ -43,23 +44,21 @@ const generateCypressCode = async (description, identifier, steps) => {
   }
 
   // Příprava requestu
-  const gptResponse = await openai.complete({
-    engine: "gpt-3.5-turbo-0125",
-    prompt: prompt,
-    maxTokens: 500,
+  const gptResponse = await openai.chat.completions.create({
     messages: [
       {
         role: "system",
         content: prompt,
       },
     ],
+    model: "gpt-3.5-turbo-0125",
   });
 
   // Debug do konzole
   console.log(JSON.stringify(gptResponse, null, 2));
 
   return {
-    testCode: gptResponse.choices[0].message,
+    testCode: gptResponse.choices[0].message.content,
     debugResponse: JSON.stringify(gptResponse, null, 2),
   };
 };
