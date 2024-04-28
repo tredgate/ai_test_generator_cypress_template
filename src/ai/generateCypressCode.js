@@ -18,6 +18,8 @@ const generateCypressCode = async (description, identifier, steps) => {
         b. Získat debugResponse
     5. Vrátit výsledek
   */
+  // Timeout pro testování loading stavu, smažte tento řádek po implementaci AI
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   return {
     testCode: `tady bude vygenerovaný kód pro test s popisem: ${description}, identifikátorem: ${identifier} \na kroky: ${steps}`,
     debugResponse: "Tady bude celá odpověď z API...",
