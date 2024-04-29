@@ -30,8 +30,7 @@ const generateCypressCode = async (description, identifier, steps) => {
   });
 
   // Příprava promptu
-  const promptInit =
-    "Generate Cypress test code with the following instrocutions. Return only the code in the response using Javascript language.";
+  const promptInit = "Generate Cypress test using the following instructions.";
   const promptDescription = `Description: ${description}`;
   const promptIdentifier = `Identifier: ${identifier}`;
   const promptSteps = `Steps: ${steps}`;
@@ -42,16 +41,23 @@ const generateCypressCode = async (description, identifier, steps) => {
   } else {
     prompt = `${promptInit}\n${promptDescription}\n${promptIdentifier}`;
   }
+  console.log("Prepared prompt: ", prompt);
 
   // Příprava requestu
   const gptResponse = await openai.chat.completions.create({
     messages: [
       {
         role: "system",
+        content:
+          "You are a test automation engineer with 15 years of experience. You are writing a Cypress test for a new feature. Write the Cypress test code. Response is formatted in plain Javascript without any comments or code blocks",
+      },
+      {
+        role: "user",
         content: prompt,
       },
     ],
     model: "gpt-3.5-turbo-0125",
+    temperature: 0.2,
   });
 
   // Debug do konzole
