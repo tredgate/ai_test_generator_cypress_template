@@ -4,17 +4,23 @@
 
 Tato aplikace je vzorovým projektem pro kurz AI. Její hlavní funkcí je generování kódu pro testování pomocí nástroje Cypress na základě vstupních parametrů.
 V hlavní (main) branch je připravená struktura React bez implementace AI.
-Hotový projekt s implementací AI je v branchi `ai-implementation`.
+> [!CAUTION]
+> V main branch je jen nachystaná funkce na integraci AI.
+> Hotový projekt s implementací AI je v branchi `ai-implementation`.
 
 ### Jak aplikaci spustit
 
+Nejdříve si repo naclonujte do počítače nebo stáhněte a rozbalte do připravené složky
 Pro spuštění aplikace je potřeba mít nainstalovaný Node.js a npm.
-Poté je potřeba spustit následující příkazy:
+Poté je potřeba spustit následující příkazy (v terminálu ve složce s projektem):
 
 1. `npm install`
 2. `npm start`
 
-Pro použití AI části aplikace je potřeba mít vygenerovaný API klíč pro [OpenAI](https://platform.openai.com/docs/quickstart). Ten je potřeba vložit do souboru `.env` pod názvem `REACT_APP_OPENAI_API_KEY` v kořenovém adresáři aplikace.
+> [!IMPORTANT]
+> Pro použití AI části aplikace je potřeba mít vygenerovaný API klíč pro [OpenAI](https://platform.openai.com/docs/quickstart).
+> Ten je potřeba vložit do souboru `.env` pod názvem `REACT_APP_OPENAI_API_KEY` v kořenovém adresáři aplikace.
+
 
 ### Struktura aplikace
 
